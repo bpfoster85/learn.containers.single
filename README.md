@@ -30,15 +30,13 @@ Repo to strengthen the containers muscle
   --image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest \
   --target-port 80 \
   --ingress 'external' \
-  --query configuration.ingress.fqdn`
+  --query configuration.ingress.fqdn \
+  --registry-login-server \
+  --registry-password \
+  --registry-username`
 
 ## Build Dockerfile Image
 docker login $ACRNAME.azurecr.io \
 cd mountainbikeapi \
 docker build --tag $TAGNAME . \
 docker push $ACRNAME.azurecr.io/$TAGNAME  \
-    
-  
-  
-  
-az containerapp create --name mountainbikeapi --resource-group rg-demos --environment cae-mountainbike  --image msftbfoster.azurecr.io/mountainbikeapi:latest  --target-port 80 --ingress 'external' --query configuration.ingress.fqdn --registry-login-server msftbfoster.azurecr.io --registry-password rNKwdZX4EpyUtNBDDcT6kEPIFtehIjU/ --registry-username msftbfoster
