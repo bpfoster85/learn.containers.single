@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-  DOCKERFILE_MTB_PATH: './mountainbikeapi'
+  DOCKERFILE_MTB_PATH: './mountain_bike_api'
   DOCKER_IMAGE_NAME: 'mountainbikeapi'
   
 jobs:
