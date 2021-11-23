@@ -23,6 +23,7 @@ jobs:
      - name: 'Build Dockerfile'
        shell: pwsh
        run: |
+        ls
         pushd '${{env.DOCKERFILE_MTB_PATH}}'
         docker build . --tag my-image-name:latest
         
