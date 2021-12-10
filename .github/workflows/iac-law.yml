@@ -34,5 +34,6 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./IaC/law.bicep
-        parameters: location=${{ env.REGION}},name=${{ env.RESOURCENAME}}
+        parameters: location=${{ env.REGION }}
+                    name=${{ env.RESOURCENAME }}
         failOnStdErr: false
