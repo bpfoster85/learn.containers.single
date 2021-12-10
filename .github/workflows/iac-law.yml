@@ -33,6 +33,6 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./iac/law.bicep
+        template: ./IaC/law.bicep
         parameters: location=${{ env.REGION}},name=${{ env.RESOURCENAME}}
         failOnStdErr: false
