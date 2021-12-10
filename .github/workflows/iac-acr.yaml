@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: IAC - Log Analytics
+name: IAC - Azure Container Registry
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -14,9 +14,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      REGION: 'westus2'
-      RESOURCENAME: 'law-aca-test'
     steps:
 
       # Checkout code
@@ -33,7 +30,5 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./IaC/law.bicep
-        parameters: location=${{ env.REGION }}
-                    name=${{ env.RESOURCENAME }}
+        template: ./IaC/acr.bicep
         failOnStdErr: false

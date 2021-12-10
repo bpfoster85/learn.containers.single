@@ -1,5 +1,5 @@
-param location string
-param name string
+param name string = 'law-${uniqueString(resourceGroup().id)}'
+param location string = resourceGroup().location
 
 resource law 'Microsoft.OperationalInsights/workspaces@2020-03-01-preview' = {
   name: name
