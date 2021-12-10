@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REGION: 'westus2'
-      RESOURCENAME: 'law-aca-test'
+      RESOURCENAME: 'law-aca-${{GITHUB_RUN_ID}}'
     steps:
 
       # Checkout code
