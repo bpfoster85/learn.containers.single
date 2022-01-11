@@ -1,0 +1,32 @@
+name: Build and Deploy Docker Images
+
+on:
+ workflow_dispatch:
+env:
+  DOCKERFILE_MTB_PATH: '.\mountain_bike_api'
+  DOCKER_IMAGE_NAME: 'mountainbikeapi'
+  
+jobs:
+
+  build:
+    runs-on: windows-latest
+    steps:
+     - uses: azure/docker-login@v1
+       with:
+          login-server: ${{secrets.ACR_SERVER}}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+          
+     - name: 'Build Dockerfile'
+       shell: pwsh
+       run: |
+        ls
+        pushd '${{env.DOCKERFILE_MTB_PATH}}'
+        docker build . --tag my-image-name:latest
+        
+     - name: 'Push Dockerfile'
+       shell: pwsh
+       run: |
+        pushd '${{env.DOCKERFILE_MTB_PATH}}'
+        docker push -a ${{secrets.ACR_SERVER}}/${{env.DOCKER_IMAGE_NAME}}
+        
